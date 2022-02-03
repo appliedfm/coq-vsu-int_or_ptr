@@ -6,7 +6,7 @@
 
 A [Verified Software Unit](https://github.com/appliedfm/coq-vsu) for using aligned pointers as integers.
 
-Implemented in C, modeled in [Coq](https://coq.inria.fr), and specified using the [Verified Software Toolchain](https://vst.cs.princeton.edu/).
+Implemented in C, modeled in [Coq](https://coq.inria.fr), and proven correct using the [Verified Software Toolchain](https://vst.cs.princeton.edu/).
 
 Compatible with [CompCert](https://compcert.org/).
 
@@ -17,6 +17,8 @@ Specifications are provided for the following targets:
 
 - [x] `x86_64-linux`
 - [x] `x86_32-linux`
+
+Proofs are checked by our [CI infrastructure](https://github.com/appliedfm/coq-vsu-int_or_ptr/actions/workflows/build.yml).
 
 
 ## Packages

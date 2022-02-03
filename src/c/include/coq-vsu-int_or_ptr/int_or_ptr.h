@@ -6,11 +6,11 @@ typedef void* int_or_ptr __attribute((aligned(_Alignof(void *))));
 #if SIZEOF_PTR == SIZEOF_LONG
   typedef long int_sizeofptr;
   typedef unsigned long uint_sizeofptr;
-  #define ARCH_INTNAT_PRINTF_FORMAT "l"
+  #define INT_SIZEOFPTR_PRINTF_FORMAT "l"
 #elif SIZEOF_PTR == SIZEOF_INT
   typedef int int_sizeofptr;
   typedef unsigned int uint_sizeofptr;
-  #define ARCH_INTNAT_PRINTF_FORMAT ""
+  #define INT_SIZEOFPTR_PRINTF_FORMAT ""
 #else
   #error "No integer type available to represent pointers"
 #endif

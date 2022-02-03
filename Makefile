@@ -109,8 +109,12 @@ _CoqProject: $(CLIGHT_TARGETS)
 	[ -n "$(SKIP_VST)" ]   || find     theories/$(PROJECT)/vst/ast                   -name "*.v" | sort                       >> $@
 	[ -n "$(SKIP_VST)" ]   || echo "-Q theories/$(PROJECT)/vst/clightgen/$(TARGET)    $(PUBLISHER).$(PROJECT).vst.clightgen"  >> $@
 	[ -n "$(SKIP_VST)" ]   || find     theories/$(PROJECT)/vst/clightgen/$(TARGET)   -name "*.v" | sort                       >> $@
+	[ -n "$(SKIP_VST)" ]   || echo "-Q theories/$(PROJECT)/vst/cmodel                 $(PUBLISHER).$(PROJECT).vst.cmodel"     >> $@
+	[ -n "$(SKIP_VST)" ]   || find     theories/$(PROJECT)/vst/cmodel                -name "*.v" | sort                       >> $@
 	[ -n "$(SKIP_VST)" ]   || echo "-Q theories/$(PROJECT)/vst/spec                   $(PUBLISHER).$(PROJECT).vst.spec"       >> $@
 	[ -n "$(SKIP_VST)" ]   || find     theories/$(PROJECT)/vst/spec                  -name "*.v" | sort                       >> $@
+	[ -n "$(SKIP_VST)" ]   || echo "-Q theories/$(PROJECT)/vst/verif                  $(PUBLISHER).$(PROJECT).vst.verif"      >> $@
+	[ -n "$(SKIP_VST)" ]   || find     theories/$(PROJECT)/vst/verif                 -name "*.v" | sort                       >> $@
 
 
 Makefile.coq: Makefile _CoqProject
@@ -154,7 +158,9 @@ install-model: theories
 COQ_SOURCES_VST= \
 	$(shell find theories/$(PROJECT)/vst/ast                    -name "*.v" | sort | cut -d'/' -f3-) \
 	$(shell find theories/$(PROJECT)/vst/clightgen/$(TARGET)    -name "*.v" | sort | cut -d'/' -f3-) \
-	$(shell find theories/$(PROJECT)/vst/spec                   -name "*.v" | sort | cut -d'/' -f3-)
+	$(shell find theories/$(PROJECT)/vst/cmodel                 -name "*.v" | sort | cut -d'/' -f3-) \
+	$(shell find theories/$(PROJECT)/vst/spec                   -name "*.v" | sort | cut -d'/' -f3-) \
+	$(shell find theories/$(PROJECT)/vst/verif                  -name "*.v" | sort | cut -d'/' -f3-)
 
 COQ_COMPILED_VST=$(COQ_SOURCES_VST:%.v=%.vo)
 
