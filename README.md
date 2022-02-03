@@ -45,7 +45,12 @@ The C library is installed to the path given by `vsu -I`. For example:
 ```console
 $ tree `vsu -I`
 /home/tcarstens/.opam/coq-8.14/lib/coq-vsu/lib/include
+└── coq-vsu-int_or_ptr
+    ├── int_or_ptr.h
+    └── src
+        └── int_or_ptr.c
 
+2 directories, 2 files
 $
 ```
 
@@ -81,8 +86,8 @@ Coq < From VST Require Import floyd.proofauto.
 
 Coq < From appliedfm Require Import int_or_ptr.vst.spec.spec.
 
-Coq < Check encode_int_or_ptr_spec.
-encode_int_or_ptr_spec
+Coq < Check int_or_ptr__is_int_spec.
+int_or_ptr__is_int_spec
      : ident * funspec
 
 Coq < 
