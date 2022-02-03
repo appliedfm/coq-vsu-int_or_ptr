@@ -10,6 +10,8 @@ Lemma body_int_or_ptr__is_int:
   semax_body Vprog ASI f_int_or_ptr__is_int int_or_ptr__is_int_spec.
 Proof.
   start_function.
+  forward.
+  forward.
   forward_if.
   {
     destruct H as [H|H].
@@ -50,6 +52,9 @@ Proof.
     }
     clear -H.
     unfold int_or_ptr__is_valid_int in H.
+    Opaque Int64.testbit Int.testbit.
+    simpl in H.
+    Transparent Int64.testbit Int.testbit.
     (* this is actually true *)
     admit.
   }

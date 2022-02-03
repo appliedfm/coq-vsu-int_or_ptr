@@ -4,7 +4,9 @@
 #include "../int_or_ptr.h"
 
 int int_or_ptr__is_int (int_or_ptr x) {
-    if ((uint_sizeofptr)0 == (uint_sizeofptr)(((int_sizeofptr)x)&1)) {
+    const uint_sizeofptr zero = 0;
+    const uint_sizeofptr one = 1;
+    if (zero == (uint_sizeofptr)(((int_sizeofptr)x) & one)) {
         return 0;
     }
     return 1;

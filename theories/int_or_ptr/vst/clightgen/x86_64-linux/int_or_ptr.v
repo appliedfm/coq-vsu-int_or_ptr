@@ -81,24 +81,31 @@ Definition _int_or_ptr__of_ptr : ident := $"int_or_ptr__of_ptr".
 Definition _int_or_ptr__to_int : ident := $"int_or_ptr__to_int".
 Definition _int_or_ptr__to_ptr : ident := $"int_or_ptr__to_ptr".
 Definition _main : ident := $"main".
+Definition _one : ident := $"one".
 Definition _x : ident := $"x".
+Definition _zero : ident := $"zero".
 
 Definition f_int_or_ptr__is_int := {|
   fn_return := tint;
   fn_callconv := cc_default;
   fn_params := ((_x, (talignas 3%N (tptr tvoid))) :: nil);
   fn_vars := nil;
-  fn_temps := nil;
+  fn_temps := ((_zero, tulong) :: (_one, tulong) :: nil);
   fn_body :=
 (Ssequence
-  (Sifthenelse (Ebinop Oeq (Ecast (Econst_int (Int.repr 0) tint) tulong)
-                 (Ecast
-                   (Ebinop Oand
-                     (Ecast (Etempvar _x (talignas 3%N (tptr tvoid))) tlong)
-                     (Econst_int (Int.repr 1) tint) tlong) tulong) tint)
-    (Sreturn (Some (Econst_int (Int.repr 0) tint)))
-    Sskip)
-  (Sreturn (Some (Econst_int (Int.repr 1) tint))))
+  (Sset _zero (Ecast (Econst_int (Int.repr 0) tint) tulong))
+  (Ssequence
+    (Sset _one (Ecast (Econst_int (Int.repr 1) tint) tulong))
+    (Ssequence
+      (Sifthenelse (Ebinop Oeq (Etempvar _zero tulong)
+                     (Ecast
+                       (Ebinop Oand
+                         (Ecast (Etempvar _x (talignas 3%N (tptr tvoid)))
+                           tlong) (Etempvar _one tulong) tulong) tulong)
+                     tint)
+        (Sreturn (Some (Econst_int (Int.repr 0) tint)))
+        Sskip)
+      (Sreturn (Some (Econst_int (Int.repr 1) tint))))))
 |}.
 
 Definition f_int_or_ptr__to_int := {|
@@ -445,5 +452,5 @@ Definition prog : Clight.program :=
   mkprogram composites global_definitions public_idents _main Logic.I.
 
 
-(*\nInput hashes (sha256):\n\nf2a06f676b9809dfbc39c8eab0c860bd917243f7884b3ef14219a56282469389  src/c/include/coq-vsu-int_or_ptr/src/int_or_ptr.c
+(*\nInput hashes (sha256):\n\n9da20abfcd03b4912c883d1a8d8edf23e96faaebffa0418b088b30ceeb2242fa  src/c/include/coq-vsu-int_or_ptr/src/int_or_ptr.c
 10c7659ec66153abc99a37458f8de78e8d85d68d4301699d0f0fef1403b78b2f  src/c/include/coq-vsu-int_or_ptr/int_or_ptr.h\n*)
