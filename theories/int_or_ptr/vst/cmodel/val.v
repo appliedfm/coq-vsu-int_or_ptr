@@ -41,20 +41,28 @@ Definition int_or_ptr__is_int (x: val): bool
       | _ => false
       end.
 
-Lemma int_or_ptr__is_int__true (x: val)
-  (Hx: int_or_ptr__is_valid x)
-  (Htest: int_or_ptr__is_int x = true):
-  int_or_ptr__is_valid_int x.
+Lemma int_or_ptr__is_int__true (x: val):
+  (int_or_ptr__is_valid x /\ int_or_ptr__is_int x = true)
+  <-> int_or_ptr__is_valid_int x.
 Proof.
-  destruct Hx as [Hx|Hx] ; now destruct x.
+  split.
+  - intros [Hx E].
+    destruct Hx as [Hx|Hx] ; now destruct x.
+  - intro H.
+    unfold int_or_ptr__is_valid.
+    destruct x ; intuition easy.
 Qed.
 
-Lemma int_or_ptr__is_int__false (x: val)
-  (Hx: int_or_ptr__is_valid x)
-  (Htest: int_or_ptr__is_int x = false):
-  int_or_ptr__is_valid_ptr x.
+Lemma int_or_ptr__is_int__false (x: val):
+  (int_or_ptr__is_valid x /\ int_or_ptr__is_int x = false)
+  <-> int_or_ptr__is_valid_ptr x.
 Proof.
-  destruct Hx as [Hx|Hx] ; now destruct x.
+  split.
+  - intros [Hx e].
+    destruct Hx as [Hx|Hx] ; now destruct x.
+  - intro H.
+    unfold int_or_ptr__is_valid.
+    destruct x ; intuition easy.
 Qed.
 
 Lemma int64__odd__and_one (i: int64) (Hodd: Z.odd (Int64.unsigned i) = true):
