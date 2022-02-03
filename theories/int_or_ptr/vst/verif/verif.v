@@ -51,12 +51,11 @@ Proof.
       now cbv in H0.
     }
     clear -H.
-    unfold int_or_ptr__is_valid_int in H.
-    Opaque Int64.testbit Int.testbit.
-    simpl in H.
-    Transparent Int64.testbit Int.testbit.
-    (* this is actually true *)
-    admit.
+    unfold int_or_ptr__is_valid_int in H ; simpl in H.
+    now first
+      [ apply int64__odd__and_one
+      | apply int__odd__and_one
+      ].
   }
   forward.
   entailer!.
