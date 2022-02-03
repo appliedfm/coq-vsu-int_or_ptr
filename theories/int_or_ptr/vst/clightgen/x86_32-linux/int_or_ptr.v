@@ -98,10 +98,9 @@ Definition f_int_or_ptr__is_int := {|
     (Sset _one (Econst_int (Int.repr 1) tint))
     (Ssequence
       (Sifthenelse (Ebinop Oeq (Etempvar _zero tint)
-                     (Ecast
-                       (Ebinop Oand
-                         (Ecast (Etempvar _x (talignas 2%N (tptr tvoid)))
-                           tint) (Etempvar _one tint) tint) tint) tint)
+                     (Ebinop Oand
+                       (Ecast (Etempvar _x (talignas 2%N (tptr tvoid))) tint)
+                       (Etempvar _one tint) tint) tint)
         (Sreturn (Some (Econst_int (Int.repr 0) tint)))
         Sskip)
       (Sreturn (Some (Econst_int (Int.repr 1) tint))))))
@@ -451,5 +450,5 @@ Definition prog : Clight.program :=
   mkprogram composites global_definitions public_idents _main Logic.I.
 
 
-(*\nInput hashes (sha256):\n\nf94f134736ec3c4ec3d2ffe2212ef870c2d7eb93e4295fa80682c681e4108d68  src/c/include/coq-vsu-int_or_ptr/src/int_or_ptr.c
+(*\nInput hashes (sha256):\n\nac6fcc49ba42d858c0caad724921dc4b286fa32c5df171f7f6827b99d7cf1bfd  src/c/include/coq-vsu-int_or_ptr/src/int_or_ptr.c
 10c7659ec66153abc99a37458f8de78e8d85d68d4301699d0f0fef1403b78b2f  src/c/include/coq-vsu-int_or_ptr/int_or_ptr.h\n*)
