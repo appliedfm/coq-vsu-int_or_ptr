@@ -16,6 +16,7 @@ jobs:
     strategy:
       matrix:
         opam_file:
+          - 'coq-int_or_ptr.opam'
           - 'coq-vsu-int_or_ptr-src.opam'
           - 'coq-vsu-int_or_ptr-vst-32.opam'
           - 'coq-vsu-int_or_ptr-vst.opam'
