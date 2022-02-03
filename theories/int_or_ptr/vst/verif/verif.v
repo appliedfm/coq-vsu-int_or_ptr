@@ -20,9 +20,16 @@ Proof.
       unfold is_long, is_int.
       entailer!.
     - destruct x ; simpl in * ; try contradiction.
+      exfalso.
       subst v.
-      simpl in *.
-      (* this is ... not so true *)
+      change
+        (Int64.repr (Int.signed (Int.repr 1)))
+        with (Int64.repr 1)
+        in H0.
+      change
+        (Int64.repr (Int.signed (Int.repr 0)))
+        with (Int64.repr 0)
+        in H0.
       admit.
   }
   {

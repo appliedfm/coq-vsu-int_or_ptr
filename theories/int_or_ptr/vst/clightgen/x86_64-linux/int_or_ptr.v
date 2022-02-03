@@ -90,19 +90,18 @@ Definition f_int_or_ptr__is_int := {|
   fn_callconv := cc_default;
   fn_params := ((_x, (talignas 3%N (tptr tvoid))) :: nil);
   fn_vars := nil;
-  fn_temps := ((_zero, tulong) :: (_one, tulong) :: nil);
+  fn_temps := ((_zero, tlong) :: (_one, tlong) :: nil);
   fn_body :=
 (Ssequence
-  (Sset _zero (Ecast (Econst_int (Int.repr 0) tint) tulong))
+  (Sset _zero (Ecast (Econst_int (Int.repr 0) tint) tlong))
   (Ssequence
-    (Sset _one (Ecast (Econst_int (Int.repr 1) tint) tulong))
+    (Sset _one (Ecast (Econst_int (Int.repr 1) tint) tlong))
     (Ssequence
-      (Sifthenelse (Ebinop Oeq (Etempvar _zero tulong)
+      (Sifthenelse (Ebinop Oeq (Etempvar _zero tlong)
                      (Ecast
                        (Ebinop Oand
                          (Ecast (Etempvar _x (talignas 3%N (tptr tvoid)))
-                           tlong) (Etempvar _one tulong) tulong) tulong)
-                     tint)
+                           tlong) (Etempvar _one tlong) tlong) tlong) tint)
         (Sreturn (Some (Econst_int (Int.repr 0) tint)))
         Sskip)
       (Sreturn (Some (Econst_int (Int.repr 1) tint))))))
@@ -452,5 +451,5 @@ Definition prog : Clight.program :=
   mkprogram composites global_definitions public_idents _main Logic.I.
 
 
-(*\nInput hashes (sha256):\n\n9da20abfcd03b4912c883d1a8d8edf23e96faaebffa0418b088b30ceeb2242fa  src/c/include/coq-vsu-int_or_ptr/src/int_or_ptr.c
+(*\nInput hashes (sha256):\n\nf94f134736ec3c4ec3d2ffe2212ef870c2d7eb93e4295fa80682c681e4108d68  src/c/include/coq-vsu-int_or_ptr/src/int_or_ptr.c
 10c7659ec66153abc99a37458f8de78e8d85d68d4301699d0f0fef1403b78b2f  src/c/include/coq-vsu-int_or_ptr/int_or_ptr.h\n*)
