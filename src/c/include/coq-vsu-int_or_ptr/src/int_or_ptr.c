@@ -5,18 +5,18 @@
 
 int int_or_ptr__is_int(int_or_ptr x)
 {
-    const int_sizeofptr zero = 0;
-    const int_sizeofptr one = 1;
-    if (zero == ((int_sizeofptr)x & one))
+    const intptr_t zero = 0;
+    const intptr_t one = 1;
+    if (zero == ((intptr_t)x & one))
     {
         return 0;
     }
     return 1;
 }
 
-int_sizeofptr int_or_ptr__to_int(int_or_ptr x)
+intptr_t int_or_ptr__to_int(int_or_ptr x)
 {
-    return (int_sizeofptr)x;
+    return (intptr_t)x;
 }
 
 void * int_or_ptr__to_ptr(int_or_ptr x)
@@ -24,7 +24,7 @@ void * int_or_ptr__to_ptr(int_or_ptr x)
     return (void *)x;
 }
 
-int_or_ptr int_or_ptr__of_int(int_sizeofptr x)
+int_or_ptr int_or_ptr__of_int(intptr_t x)
 {
     return (int_or_ptr)x;
 }

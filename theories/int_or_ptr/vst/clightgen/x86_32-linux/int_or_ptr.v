@@ -450,5 +450,5 @@ Definition prog : Clight.program :=
   mkprogram composites global_definitions public_idents _main Logic.I.
 
 
-(*\nInput hashes (sha256):\n\nac6fcc49ba42d858c0caad724921dc4b286fa32c5df171f7f6827b99d7cf1bfd  src/c/include/coq-vsu-int_or_ptr/src/int_or_ptr.c
-10c7659ec66153abc99a37458f8de78e8d85d68d4301699d0f0fef1403b78b2f  src/c/include/coq-vsu-int_or_ptr/int_or_ptr.h\n*)
+(*\nInput hashes (sha256):\n\n26ea167ec53b466b48aebe9ac3717bf1ec8cd6a5b39120c57bdf59900d26ca7b  src/c/include/coq-vsu-int_or_ptr/src/int_or_ptr.c
+12948312f2ed4efc64198d4be12c3b01dc35d3077378ab16e7e03cc2b4c0553a  src/c/include/coq-vsu-int_or_ptr/int_or_ptr.h\n*)
