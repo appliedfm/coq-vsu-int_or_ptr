@@ -35,9 +35,7 @@ Proof.
   {
     forward.
     entailer!.
-    change (Tpointer Tvoid {| attr_volatile := false; attr_alignas := Some 3%N |}) with int_or_ptr_type in H1.
-    change (Tpointer Tvoid {| attr_volatile := false; attr_alignas := Some 2%N |}) with int_or_ptr_type in H1.
-    simpl in H1.
+    clear H1.
     destruct H as [H|H] ; destruct x ; simpl in * ; try easy.
     exfalso.
     change
@@ -55,7 +53,7 @@ Proof.
           in H0
       ].
     {
-      now cbv in H0.
+      inversion H0.
     }
     clear -H.
     unfold int_or_ptr__is_valid_int in H ; simpl in H.
@@ -80,7 +78,8 @@ Lemma body_int_or_ptr__to_int:
   semax_body Vprog ASI f_int_or_ptr__to_int int_or_ptr__to_int_spec.
 Proof.
   start_function.
-  red in H. destruct x; try easy.
+  red in H.
+  destruct x; try easy.
   forward.
 Qed.
 
@@ -96,4 +95,6 @@ Lemma body_int_or_ptr__to_ptr:
 Proof.
   start_function.
   forward.
+  red in H.
+  destruct x; try easy.
 Qed.

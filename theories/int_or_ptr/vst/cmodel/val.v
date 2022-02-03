@@ -41,6 +41,22 @@ Definition int_or_ptr__is_int (x: val): bool
       | _ => false
       end.
 
+Lemma int_or_ptr__is_int__true (x: val)
+  (Hx: int_or_ptr__is_valid x)
+  (Htest: int_or_ptr__is_int x = true):
+  int_or_ptr__is_valid_int x.
+Proof.
+  destruct Hx as [Hx|Hx] ; now destruct x.
+Qed.
+
+Lemma int_or_ptr__is_int__false (x: val)
+  (Hx: int_or_ptr__is_valid x)
+  (Htest: int_or_ptr__is_int x = false):
+  int_or_ptr__is_valid_ptr x.
+Proof.
+  destruct Hx as [Hx|Hx] ; now destruct x.
+Qed.
+
 Lemma int64__odd__and_one (i: int64) (Hodd: Z.odd (Int64.unsigned i) = true):
   Int64.repr 1 = Int64.and i (Int64.repr 1).
 Proof.
