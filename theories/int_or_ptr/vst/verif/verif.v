@@ -3,8 +3,23 @@ From VST Require Import floyd.proofauto.
 From appliedfm Require Import int_or_ptr.model.int_or_ptr.
 From appliedfm Require Import int_or_ptr.vst.ast.ast.
 From appliedfm Require Import int_or_ptr.vst.clightgen.int_or_ptr.
+From appliedfm Require Import int_or_ptr.vst.cmodel.constants.
 From appliedfm Require Import int_or_ptr.vst.cmodel.val.
 From appliedfm Require Import int_or_ptr.vst.spec.spec.
+
+Lemma body_int_or_ptr__sizeof:
+  semax_body Vprog ASI f_int_or_ptr__sizeof int_or_ptr__sizeof_spec.
+Proof.
+  start_function.
+  forward.
+Qed.
+
+Lemma body_int_or_ptr__alignof:
+  semax_body Vprog ASI f_int_or_ptr__alignof int_or_ptr__alignof_spec.
+Proof.
+  start_function.
+  forward.
+Qed.
 
 Lemma body_int_or_ptr__is_int:
   semax_body Vprog ASI f_int_or_ptr__is_int int_or_ptr__is_int_spec.

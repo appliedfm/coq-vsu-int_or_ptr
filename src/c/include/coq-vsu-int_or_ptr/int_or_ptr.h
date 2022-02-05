@@ -2,8 +2,13 @@
 #define COQ_VSU_INT_OR_PTR__INT_OR_PTR_H
 
 #include <stdint.h>
+#include <stddef.h>
 
 typedef void* int_or_ptr __attribute((aligned(_Alignof(void *))));
+
+size_t int_or_ptr__sizeof();
+
+size_t int_or_ptr__alignof();
 
 /* returns 1 if int, 0 if aligned ptr */
 int int_or_ptr__is_int(int_or_ptr x);

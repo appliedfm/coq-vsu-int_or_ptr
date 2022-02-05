@@ -75,15 +75,37 @@ Definition ___compcert_va_composite : ident := $"__compcert_va_composite".
 Definition ___compcert_va_float64 : ident := $"__compcert_va_float64".
 Definition ___compcert_va_int32 : ident := $"__compcert_va_int32".
 Definition ___compcert_va_int64 : ident := $"__compcert_va_int64".
+Definition _int_or_ptr__alignof : ident := $"int_or_ptr__alignof".
 Definition _int_or_ptr__is_int : ident := $"int_or_ptr__is_int".
 Definition _int_or_ptr__of_int : ident := $"int_or_ptr__of_int".
 Definition _int_or_ptr__of_ptr : ident := $"int_or_ptr__of_ptr".
+Definition _int_or_ptr__sizeof : ident := $"int_or_ptr__sizeof".
 Definition _int_or_ptr__to_int : ident := $"int_or_ptr__to_int".
 Definition _int_or_ptr__to_ptr : ident := $"int_or_ptr__to_ptr".
 Definition _main : ident := $"main".
 Definition _one : ident := $"one".
 Definition _x : ident := $"x".
 Definition _zero : ident := $"zero".
+
+Definition f_int_or_ptr__sizeof := {|
+  fn_return := tulong;
+  fn_callconv := cc_default;
+  fn_params := nil;
+  fn_vars := nil;
+  fn_temps := nil;
+  fn_body :=
+(Sreturn (Some (Esizeof (talignas 3%N (tptr tvoid)) tulong)))
+|}.
+
+Definition f_int_or_ptr__alignof := {|
+  fn_return := tulong;
+  fn_callconv := cc_default;
+  fn_params := nil;
+  fn_vars := nil;
+  fn_temps := nil;
+  fn_body :=
+(Sreturn (Some (Ealignof (talignas 3%N (tptr tvoid)) tulong)))
+|}.
 
 Definition f_int_or_ptr__is_int := {|
   fn_return := tint;
@@ -417,6 +439,8 @@ Definition global_definitions : list (ident * globdef fundef type) :=
                      {|cc_vararg:=(Some 1); cc_unproto:=false; cc_structret:=false|}))
      (Tcons tint Tnil) tvoid
      {|cc_vararg:=(Some 1); cc_unproto:=false; cc_structret:=false|})) ::
+ (_int_or_ptr__sizeof, Gfun(Internal f_int_or_ptr__sizeof)) ::
+ (_int_or_ptr__alignof, Gfun(Internal f_int_or_ptr__alignof)) ::
  (_int_or_ptr__is_int, Gfun(Internal f_int_or_ptr__is_int)) ::
  (_int_or_ptr__to_int, Gfun(Internal f_int_or_ptr__to_int)) ::
  (_int_or_ptr__to_ptr, Gfun(Internal f_int_or_ptr__to_ptr)) ::
@@ -425,30 +449,31 @@ Definition global_definitions : list (ident * globdef fundef type) :=
 
 Definition public_idents : list ident :=
 (_int_or_ptr__of_ptr :: _int_or_ptr__of_int :: _int_or_ptr__to_ptr ::
- _int_or_ptr__to_int :: _int_or_ptr__is_int :: ___builtin_debug ::
- ___builtin_write32_reversed :: ___builtin_write16_reversed ::
- ___builtin_read32_reversed :: ___builtin_read16_reversed ::
- ___builtin_fnmsub :: ___builtin_fnmadd :: ___builtin_fmsub ::
- ___builtin_fmadd :: ___builtin_fmin :: ___builtin_fmax ::
- ___compcert_i64_umulh :: ___compcert_i64_smulh :: ___compcert_i64_sar ::
- ___compcert_i64_shr :: ___compcert_i64_shl :: ___compcert_i64_umod ::
- ___compcert_i64_smod :: ___compcert_i64_udiv :: ___compcert_i64_sdiv ::
- ___compcert_i64_utof :: ___compcert_i64_stof :: ___compcert_i64_utod ::
- ___compcert_i64_stod :: ___compcert_i64_dtou :: ___compcert_i64_dtos ::
- ___builtin_expect :: ___builtin_unreachable :: ___compcert_va_composite ::
- ___compcert_va_float64 :: ___compcert_va_int64 :: ___compcert_va_int32 ::
- ___builtin_va_end :: ___builtin_va_copy :: ___builtin_va_arg ::
- ___builtin_va_start :: ___builtin_membar :: ___builtin_annot_intval ::
- ___builtin_annot :: ___builtin_sel :: ___builtin_memcpy_aligned ::
- ___builtin_sqrt :: ___builtin_fsqrt :: ___builtin_fabsf ::
- ___builtin_fabs :: ___builtin_ctzll :: ___builtin_ctzl :: ___builtin_ctz ::
- ___builtin_clzll :: ___builtin_clzl :: ___builtin_clz ::
- ___builtin_bswap16 :: ___builtin_bswap32 :: ___builtin_bswap ::
- ___builtin_bswap64 :: ___builtin_ais_annot :: nil).
+ _int_or_ptr__to_int :: _int_or_ptr__is_int :: _int_or_ptr__alignof ::
+ _int_or_ptr__sizeof :: ___builtin_debug :: ___builtin_write32_reversed ::
+ ___builtin_write16_reversed :: ___builtin_read32_reversed ::
+ ___builtin_read16_reversed :: ___builtin_fnmsub :: ___builtin_fnmadd ::
+ ___builtin_fmsub :: ___builtin_fmadd :: ___builtin_fmin ::
+ ___builtin_fmax :: ___compcert_i64_umulh :: ___compcert_i64_smulh ::
+ ___compcert_i64_sar :: ___compcert_i64_shr :: ___compcert_i64_shl ::
+ ___compcert_i64_umod :: ___compcert_i64_smod :: ___compcert_i64_udiv ::
+ ___compcert_i64_sdiv :: ___compcert_i64_utof :: ___compcert_i64_stof ::
+ ___compcert_i64_utod :: ___compcert_i64_stod :: ___compcert_i64_dtou ::
+ ___compcert_i64_dtos :: ___builtin_expect :: ___builtin_unreachable ::
+ ___compcert_va_composite :: ___compcert_va_float64 ::
+ ___compcert_va_int64 :: ___compcert_va_int32 :: ___builtin_va_end ::
+ ___builtin_va_copy :: ___builtin_va_arg :: ___builtin_va_start ::
+ ___builtin_membar :: ___builtin_annot_intval :: ___builtin_annot ::
+ ___builtin_sel :: ___builtin_memcpy_aligned :: ___builtin_sqrt ::
+ ___builtin_fsqrt :: ___builtin_fabsf :: ___builtin_fabs ::
+ ___builtin_ctzll :: ___builtin_ctzl :: ___builtin_ctz :: ___builtin_clzll ::
+ ___builtin_clzl :: ___builtin_clz :: ___builtin_bswap16 ::
+ ___builtin_bswap32 :: ___builtin_bswap :: ___builtin_bswap64 ::
+ ___builtin_ais_annot :: nil).
 
 Definition prog : Clight.program := 
   mkprogram composites global_definitions public_idents _main Logic.I.
 
 
-(*\nInput hashes (sha256):\n\n26ea167ec53b466b48aebe9ac3717bf1ec8cd6a5b39120c57bdf59900d26ca7b  src/c/include/coq-vsu-int_or_ptr/src/int_or_ptr.c
-12948312f2ed4efc64198d4be12c3b01dc35d3077378ab16e7e03cc2b4c0553a  src/c/include/coq-vsu-int_or_ptr/int_or_ptr.h\n*)
+(*\nInput hashes (sha256):\n\ne84d4d147ec6129993ebe99152f2f86e237a4101658caf5c8c1adabaf882f278  src/c/include/coq-vsu-int_or_ptr/src/int_or_ptr.c
+e8fdf807050039d5b402014b9763801d774430be0caa20d230ee6bf6899b3fc5  src/c/include/coq-vsu-int_or_ptr/int_or_ptr.h\n*)

@@ -3,6 +3,14 @@
 
 #include "../int_or_ptr.h"
 
+size_t int_or_ptr__sizeof() {
+    return sizeof(int_or_ptr);
+}
+
+size_t int_or_ptr__alignof() {
+    return _Alignof(int_or_ptr);
+}
+
 int int_or_ptr__is_int(int_or_ptr x)
 {
     const intptr_t zero = 0;

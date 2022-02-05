@@ -4,6 +4,10 @@ From Coq Require Import ZArith.ZArith.
 From compcert Require Import common.Values.
 From compcert Require Import lib.Integers.
 
+From VST Require Import floyd.proofauto.
+
+From appliedfm Require Import int_or_ptr.model.int_or_ptr.
+
 Local Open Scope Z.
 
 Definition int_or_ptr__is_valid_int (x: val): Prop :=
@@ -27,6 +31,15 @@ Definition int_or_ptr__is_valid_ptr (x: val): Prop :=
 
 Definition int_or_ptr__is_valid (x: val): Prop :=
   int_or_ptr__is_valid_int x \/ int_or_ptr__is_valid_ptr x.
+
+(* 
+Definition int_or_ptr__to_val (x: int_or_ptr {p: val | isptr p}): val
+ := match x with
+    | None => Vundef
+    | Some (inl z) => if Archi.ptr64 then Vlong (Int64.repr z) else Vint (Int.repr z)
+    | Some (inr p) => proj1_sig p
+    end.
+ *)
 
 Definition int_or_ptr__is_int (x: val): bool
  := if Archi.ptr64

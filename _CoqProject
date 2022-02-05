@@ -8,6 +8,7 @@ theories/int_or_ptr/vst/ast/ast.v
 -Q theories/int_or_ptr/vst/clightgen/x86_64-linux    appliedfm.int_or_ptr.vst.clightgen
 theories/int_or_ptr/vst/clightgen/x86_64-linux/int_or_ptr.v
 -Q theories/int_or_ptr/vst/cmodel                 appliedfm.int_or_ptr.vst.cmodel
+theories/int_or_ptr/vst/cmodel/constants.v
 theories/int_or_ptr/vst/cmodel/val.v
 -Q theories/int_or_ptr/vst/spec                   appliedfm.int_or_ptr.vst.spec
 theories/int_or_ptr/vst/spec/spec.v
