@@ -6,11 +6,7 @@ From compcert Require Import lib.Integers.
 
 From VST Require Import floyd.proofauto.
 
-From appliedfm Require Import int_or_ptr.model.int_or_ptr.
-
 Local Open Scope Z.
-
-#[global]Instance int_or_ptr__Inhabitant (X: Type) : (Inhabitant (int_or_ptr X)) := None.
 
 
 Definition int_or_ptr__is_valid_int (x: val): Prop :=
@@ -37,6 +33,8 @@ Definition int_or_ptr__is_valid (x: val): Prop :=
 
 
 Definition int_or_ptr: Type := option {p: val | int_or_ptr__is_valid p}.
+
+#[global]Instance int_or_ptr__Inhabitant (X: Type) : (Inhabitant int_or_ptr) := None.
 
 Definition int_or_ptr__to_val (x: int_or_ptr): val
  := match x with

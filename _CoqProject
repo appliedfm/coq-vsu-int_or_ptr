@@ -1,8 +1,6 @@
 # x86_64-linux
 
 
--Q theories/int_or_ptr/model                      appliedfm.int_or_ptr.model
-theories/int_or_ptr/model/int_or_ptr.v
 -Q theories/int_or_ptr/vst/ast                    appliedfm.int_or_ptr.vst.ast
 theories/int_or_ptr/vst/ast/ast.v
 -Q theories/int_or_ptr/vst/clightgen/x86_64-linux    appliedfm.int_or_ptr.vst.clightgen

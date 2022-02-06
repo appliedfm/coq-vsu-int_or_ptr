@@ -1,6 +1,5 @@
 From VST Require Import floyd.proofauto.
 
-From appliedfm Require Import int_or_ptr.model.int_or_ptr.
 From appliedfm Require Import int_or_ptr.vst.ast.ast.
 From appliedfm Require Import int_or_ptr.vst.clightgen.int_or_ptr.
 From appliedfm Require Import int_or_ptr.vst.cmodel.constants.
