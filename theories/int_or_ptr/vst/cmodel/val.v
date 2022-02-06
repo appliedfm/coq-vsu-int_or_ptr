@@ -35,14 +35,21 @@ Definition int_or_ptr__is_valid_ptr (x: val): Prop :=
 Definition int_or_ptr__is_valid (x: val): Prop :=
   int_or_ptr__is_valid_int x \/ int_or_ptr__is_valid_ptr x.
 
-(* 
-Definition int_or_ptr__to_val (x: int_or_ptr {p: val | isptr p}): val
+
+Definition int_or_ptr: Type := option {p: val | int_or_ptr__is_valid p}.
+
+Definition int_or_ptr__to_val (x: int_or_ptr): val
  := match x with
     | None => Vundef
-    | Some (inl z) => if Archi.ptr64 then Vlong (Int64.repr z) else Vint (Int.repr z)
-    | Some (inr p) => proj1_sig p
+    | Some v => proj1_sig v
     end.
- *)
+
+Lemma int_or_ptr__to_val__is_valid (x: int_or_ptr) (Hx: x <> None):
+  int_or_ptr__is_valid (int_or_ptr__to_val x).
+Proof.
+  destruct x as [x|] ; try congruence.
+  apply (proj2_sig x).
+Qed.
 
 Definition int_or_ptr__is_int (x: val): bool
  := if Archi.ptr64

@@ -23,11 +23,9 @@ Proofs are checked by our [CI infrastructure](https://github.com/appliedfm/coq-v
 
 ## Packages
 
-* `coq-int_or_ptr` - functional model
 * `coq-vsu-int_or_ptr-src` - C source code
-* `coq-vsu-int_or_ptr-vst` - VST spec (`x86_64-linux`)
-* `coq-vsu-int_or_ptr-vst-32` - VST spec (`x86_32-linux`)
-* `coq-vsu-int_or_ptr` - All of the above
+* `coq-vsu-int_or_ptr-vst` - VST model, spec, & proof (`x86_64-linux`)
+* `coq-vsu-int_or_ptr-vst-32` - VST model, spec, & proof (`x86_32-linux`)
 
 
 ## Installing
@@ -36,7 +34,7 @@ Installation is performed by `opam` with help by [coq-vsu](https://github.com/ap
 
 ```console
 $ opam pin -n -y .
-$ opam install coq-vsu-int_or_ptr
+$ opam install coq-vsu-int_or_ptr-vst coq-vsu-int_or_ptr-vst-32
 ```
 
 
@@ -59,15 +57,7 @@ $
 
 ## Using the Coq library
 
-We currently publish three Coq libraries:
-
-* `coq-int_or_ptr` - functional model
-* `coq-vsu-int_or_ptr-vst` - VST spec (`x86_64-linux`)
-* `coq-vsu-int_or_ptr-vst-32` - VST spec (`x86_32-linux`)
-
-The `coq-int_or_ptr` library is target-agnostic and is therefore always installed into a location within Coq's search path.
-
-However, `coq-vsu-int_or_ptr-vst` and `coq-vsu-int_or_ptr-vst-32` are both target-specific. As such, they are sometimes installed into locations outside of Coq's search path. Fortunately, these libraries can be found by calling `vsu --show-coq-variant-path=PACKAGE`. For example:
+The `coq-vsu-int_or_ptr-vst` and `coq-vsu-int_or_ptr-vst-32` are both target-specific. As such, they are sometimes installed into locations outside of Coq's search path. Fortunately, these libraries can be found by calling `vsu --show-coq-variant-path=PACKAGE`. For example:
 
 ```console
 $ echo `vsu --show-coq-variant-path=coq-vsu-int_or_ptr-vst-32`

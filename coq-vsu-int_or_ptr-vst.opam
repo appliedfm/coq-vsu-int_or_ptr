@@ -19,7 +19,6 @@ depends: [
     "coq-compcert" {= "3.9"}
     "coq-vst" {= "2.8"}
     "coq-vsu"
-    "coq-int_or_ptr" {= version}
     "coq-vsu-int_or_ptr-src" {= version}
 ]
 synopsis: "Formally specified functions for using pointers as integers"
