@@ -15,7 +15,7 @@ PROJECT=int_or_ptr
 # configure
 #
 
-J?=4
+J?=$(shell nproc)
 BITSIZE?=opam
 COQC?=coqc
 SHA256SUM?=sha256sum
