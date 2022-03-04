@@ -7,21 +7,21 @@ From appliedfm Require Import int_or_ptr.vst.cmodel.val.
 From appliedfm Require Import int_or_ptr.vst.spec.spec.
 
 Lemma body_int_or_ptr__sizeof:
-  semax_body Vprog int_or_ptr__specs.all f_int_or_ptr__sizeof int_or_ptr__sizeof_spec.
+  semax_body Vprog int_or_ptr__specs.gprog f_int_or_ptr__sizeof int_or_ptr__sizeof_spec.
 Proof.
   start_function.
   forward.
 Qed.
 
 Lemma body_int_or_ptr__alignof:
-  semax_body Vprog int_or_ptr__specs.all f_int_or_ptr__alignof int_or_ptr__alignof_spec.
+  semax_body Vprog int_or_ptr__specs.gprog f_int_or_ptr__alignof int_or_ptr__alignof_spec.
 Proof.
   start_function.
   forward.
 Qed.
 
 Lemma body_int_or_ptr__is_int:
-  semax_body Vprog int_or_ptr__specs.all f_int_or_ptr__is_int int_or_ptr__is_int_spec.
+  semax_body Vprog int_or_ptr__specs.gprog f_int_or_ptr__is_int int_or_ptr__is_int_spec.
 Proof.
   start_function.
   forward.
@@ -82,14 +82,14 @@ Proof.
 Admitted.
 
 Lemma body_int_or_ptr__of_int:
-  semax_body Vprog int_or_ptr__specs.all f_int_or_ptr__of_int int_or_ptr__of_int_spec.
+  semax_body Vprog int_or_ptr__specs.gprog f_int_or_ptr__of_int int_or_ptr__of_int_spec.
 Proof.
   start_function.
   forward.
 Qed.
 
 Lemma body_int_or_ptr__to_int:
-  semax_body Vprog int_or_ptr__specs.all f_int_or_ptr__to_int int_or_ptr__to_int_spec.
+  semax_body Vprog int_or_ptr__specs.gprog f_int_or_ptr__to_int int_or_ptr__to_int_spec.
 Proof.
   start_function.
   red in H.
@@ -98,14 +98,14 @@ Proof.
 Qed.
 
 Lemma body_int_or_ptr__of_ptr:
-  semax_body Vprog int_or_ptr__specs.all f_int_or_ptr__of_ptr int_or_ptr__of_ptr_spec.
+  semax_body Vprog int_or_ptr__specs.gprog f_int_or_ptr__of_ptr int_or_ptr__of_ptr_spec.
 Proof.
   start_function.
   forward.
 Qed.
 
 Lemma body_int_or_ptr__to_ptr:
-  semax_body Vprog int_or_ptr__specs.all f_int_or_ptr__to_ptr int_or_ptr__to_ptr_spec.
+  semax_body Vprog int_or_ptr__specs.gprog f_int_or_ptr__to_ptr int_or_ptr__to_ptr_spec.
 Proof.
   start_function.
   forward.

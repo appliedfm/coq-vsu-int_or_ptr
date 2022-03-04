@@ -98,9 +98,6 @@ Definition int_or_ptr__of_ptr_spec :=
     SEP().
 
 Module int_or_ptr__specs.
-  Definition externs: funspecs := [].
-  Definition imports: funspecs := [].
-  Definition internals: funspecs := [].
   Definition exports: funspecs :=
     [ int_or_ptr__sizeof_spec
     ; int_or_ptr__alignof_spec
@@ -110,5 +107,10 @@ Module int_or_ptr__specs.
     ; int_or_ptr__of_int_spec
     ; int_or_ptr__of_ptr_spec
     ].
-  Definition all: funspecs := imports ++ internals ++ exports.
+  Definition externs: funspecs := [].
+  Definition imports: funspecs := [].
+  Definition private: funspecs := [].
+  Definition internals: funspecs := private ++ exports.
+  Definition gprog: funspecs := imports ++ internals.
+  Definition vprog: varspecs := ltac:(mk_varspecs prog).
 End int_or_ptr__specs.
