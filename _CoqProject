@@ -12,3 +12,4 @@ theories/int_or_ptr/vst/cmodel/val.v
 theories/int_or_ptr/vst/spec/spec.v
 -Q theories/int_or_ptr/vst/verif                  appliedfm.int_or_ptr.vst.verif
 theories/int_or_ptr/vst/verif/verif.v
+theories/int_or_ptr/vst/verif/vsu.v

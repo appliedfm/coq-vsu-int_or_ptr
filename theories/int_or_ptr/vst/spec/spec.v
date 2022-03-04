@@ -97,12 +97,17 @@ Definition int_or_ptr__of_ptr_spec :=
     LOCAL (temp ret_temp x)
     SEP().
 
-Definition ASI: funspecs := ltac:(with_library prog
-  [ int_or_ptr__sizeof_spec
-  ; int_or_ptr__alignof_spec
-  ; int_or_ptr__is_int_spec
-  ; int_or_ptr__to_int_spec
-  ; int_or_ptr__to_ptr_spec
-  ; int_or_ptr__of_int_spec
-  ; int_or_ptr__of_ptr_spec
-  ]).
+Module VSUspec.
+  Definition imports: funspecs := [].
+  Definition internals: funspecs := [].
+  Definition exports: funspecs :=
+    [ int_or_ptr__sizeof_spec
+    ; int_or_ptr__alignof_spec
+    ; int_or_ptr__is_int_spec
+    ; int_or_ptr__to_int_spec
+    ; int_or_ptr__to_ptr_spec
+    ; int_or_ptr__of_int_spec
+    ; int_or_ptr__of_ptr_spec
+    ].
+  Definition all: funspecs := imports ++ internals ++ exports.
+End VSUspec.

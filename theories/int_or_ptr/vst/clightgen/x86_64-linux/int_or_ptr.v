@@ -477,3 +477,5 @@ Definition prog : Clight.program :=
 
 (*\nInput hashes (sha256):\n\ne84d4d147ec6129993ebe99152f2f86e237a4101658caf5c8c1adabaf882f278  src/c/include/coq-vsu-int_or_ptr/src/int_or_ptr.c
 e8fdf807050039d5b402014b9763801d774430be0caa20d230ee6bf6899b3fc5  src/c/include/coq-vsu-int_or_ptr/int_or_ptr.h\n*)
+(*\nInput hashes (sha256):\n\ne84d4d147ec6129993ebe99152f2f86e237a4101658caf5c8c1adabaf882f278  src/c/include/coq-vsu-int_or_ptr/src/int_or_ptr.c
+e8fdf807050039d5b402014b9763801d774430be0caa20d230ee6bf6899b3fc5  src/c/include/coq-vsu-int_or_ptr/int_or_ptr.h\n*)
