@@ -9,7 +9,7 @@ From appliedfm Require Import int_or_ptr.vst.verif.verif.
 
 Lemma int_or_ptr__vsu: VSU int_or_ptr__specs.externs int_or_ptr__specs.imports ltac:(QPprog prog) int_or_ptr__specs.exports emp.
 Proof.
-  mkVSU prog int_or_ptr__specs.all.
+  mkVSU prog int_or_ptr__specs.exports.
   - solve_SF_internal body_int_or_ptr__sizeof.
   - solve_SF_internal body_int_or_ptr__alignof.
   - solve_SF_internal body_int_or_ptr__is_int.
