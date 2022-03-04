@@ -98,6 +98,7 @@ Definition int_or_ptr__of_ptr_spec :=
     SEP().
 
 Module int_or_ptr__specs.
+  Definition externs: funspecs := [].
   Definition imports: funspecs := [].
   Definition internals: funspecs := [].
   Definition exports: funspecs :=
