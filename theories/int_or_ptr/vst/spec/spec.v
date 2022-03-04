@@ -97,7 +97,7 @@ Definition int_or_ptr__of_ptr_spec :=
     LOCAL (temp ret_temp x)
     SEP().
 
-Module VSUspec.
+Module int_or_ptr__specs.
   Definition imports: funspecs := [].
   Definition internals: funspecs := [].
   Definition exports: funspecs :=
@@ -110,4 +110,4 @@ Module VSUspec.
     ; int_or_ptr__of_ptr_spec
     ].
   Definition all: funspecs := imports ++ internals ++ exports.
-End VSUspec.
+End int_or_ptr__specs.

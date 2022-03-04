@@ -7,9 +7,9 @@ From appliedfm Require Import int_or_ptr.vst.verif.verif.
 
 #[local] Existing Instance NullExtension.Espec.
 
-Lemma VSU: VSU [] VSUspec.imports ltac:(QPprog prog) VSUspec.exports emp.
+Lemma int_or_ptr__vsu: VSU [] int_or_ptr__specs.imports ltac:(QPprog prog) int_or_ptr__specs.exports emp.
 Proof.
-mkVSU prog VSUspec.all.
+mkVSU prog int_or_ptr__specs.all.
 - solve_SF_internal body_int_or_ptr__sizeof.
 - solve_SF_internal body_int_or_ptr__alignof.
 - solve_SF_internal body_int_or_ptr__is_int.
